@@ -32,8 +32,12 @@ const CharacterDetails = () => {
     }, [id]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="container-fluid d-flex justify-content-center text-center align-items-center"style={{ height: "100vh", backgroundImage: `url(${thanosGif})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+
+            <h1 style={{fontFamily: 'Impact', fontSize: '5vw', color: 'white', textShadow: '6px 8px 4px black'}} >Loading...</h1>
+            </div>;
     }
+
 
     if (!character) {
         return <div>Character Not Found!</div>;
