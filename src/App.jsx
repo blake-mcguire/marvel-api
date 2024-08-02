@@ -1,27 +1,19 @@
-import React, { useState } from 'react';
-import CharacterList from './CharacterList';
-import CharacterDetails from './CharacterDetail';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CharacterList from "./CharacterList";
+import CharacterDetails from "./CharacterDetail";
+import HomePage from "./HomePage"
 
-function App() {
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
-
-  const handleCharacterSelect = (characterId) => {
-    setSelectedCharacter(characterId);
-  };
-  const handleCloseModal = () => {
-    setSelectedCharacter(null);
-  }
-
-  return (
-    <>
-      {selectedCharacter ? (
-        <CharacterDetails characterID={selectedCharacter} onClose={handleCloseModal} />
-      ) : (
-        <CharacterList onCharacterSelect={handleCharacterSelect} />
-      )}
-    </>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+              <Route path="/" element={<HomePage/>}/>
+                <Route path="/characters" element={<CharacterList />} />
+                <Route path="/character/:id" element={<CharacterDetails />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
